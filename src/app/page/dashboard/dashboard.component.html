@@ -1,15 +1,70 @@
-<div class="col-lg-12">
-  <div class="row">
+<div class="col-lg-12 pt-3">
+  <div class="row mb-3">
     <div class="col-lg-6"><h1>Dashboard</h1></div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <img src="assets/calendar/calendar.png" alt="calendar">
+          Period
+          {{dateString}}
+          <fa-icon [icon]="faAngleDown" class="pointer" (click)="showCalendar = !showCalendar"></fa-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" *ngIf="showCalendar"></div>
+    <div class="col-lg-6" *ngIf="showCalendar">
+      <div class="card">
+        <div class="card-body">
+          <img src="assets/calendar/calendar.png" alt="calendar">
+          Period
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-lg-12">
       <div class="card">
-        <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">MARKET INSIGHTS</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          Sales Turnover
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">AVERAGE PURCHASE VALUE</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">BEST SELLING SKU</h5>
+          <div class="row mb-1">
+            <div class="col-lg-12">
+              <div class="card">
+                asd
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">TOP COMPETITOR SKU</h5>
         </div>
       </div>
     </div>
