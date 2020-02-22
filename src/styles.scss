@@ -1,4 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+$primary: #289E45;
+$success: #37B04C;
+$primary-transparent: #6BE681;
+
 .pointer {
   cursor: pointer;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+
+.m-l-20 {
+  margin-left: 20px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.m-r-20 {
+  margin-right: 20px;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.card-success {
+  background-color: $success;
+  color: white;
+}
+
+.card-body-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title {
+  display: inline-block;
+}
+
+.help {
+  display: flex;
+  float: right;
+}
+
+.help div {
+  margin: auto 5px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.dropdown-menu {
+  margin-top: 35px;
+  margin-left: 75px;
 }

@@ -1,31 +1,66 @@
 <div class="col-lg-12 pt-3">
   <div class="row mb-3">
-    <div class="col-lg-6"><h1>Dashboard</h1></div>
-    <div class="col-lg-6">
+    <div class="col-lg-7"><h1>Dashboard</h1></div>
+    <div class="col-lg-5">
       <div class="card">
-        <div class="card-body">
-          <img src="assets/calendar/calendar.png" alt="calendar">
-          Period
-          {{dateString}}
-          <fa-icon [icon]="faAngleDown" class="pointer" (click)="showCalendar = !showCalendar"></fa-icon>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6" *ngIf="showCalendar"></div>
-    <div class="col-lg-6" *ngIf="showCalendar">
-      <div class="card">
-        <div class="card-body">
-          <img src="assets/calendar/calendar.png" alt="calendar">
-          Period
+        <div class="card-body card-body-flex">
+          <div class="d-inline-block">
+            <img src="assets/calendar/calendar.png" alt="calendar">
+            <span class="m-l-10 m-r-10">Period</span>
+            <span class="m-l-20 m-r-20">{{dateString}}</span>
+          </div>
+          
+          <form class="form-inline">
+            <div class="form-group hidden">
+              <div class="input-group" style="height: 0">
+                <input name="datepicker"
+                        class="form-control"
+                        ngbDatepicker
+                        #datepicker="ngbDatepicker"
+                        [autoClose]="'outside'" navigation="arrows"
+                        (dateSelect)="onDateSelection($event)"
+                        [displayMonths]="2" placement="bottom auto"
+                        [dayTemplate]="t" [disabled]="disabled"
+                        outsideDays="hidden" [footerTemplate]="footerTemplate"
+                        [startDate]="fromDate" style="visibility: hidden; display: none;">
+                <ng-template #t let-date let-focused="focused">
+                  <span class="custom-day"
+                        [class.focused]="focused"
+                        [class.range]="isRange(date)"
+                        [class.faded]="isHovered(date) || isInside(date)"
+                        (mouseenter)="hoveredDate = date"
+                        (mouseleave)="hoveredDate = null">
+                    {{ date.day }}
+                  </span>
+                </ng-template>
+              </div>
+            </div>
+          </form>
+          <ng-template #footerTemplate>
+            <hr class="my-0">
+            <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'today', 'btn-light': period != 'today'}" (click)="setPeriod('today'); $event.preventDefault()">Today</button>
+            <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'yesterday', 'btn-light': period != 'yesterday'}" (click)="setPeriod('yesterday'); $event.preventDefault()">Yesterday</button>
+            <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'last 7 days', 'btn-light': period != 'last 7 days'}" (click)="setPeriod('last 7 days'); $event.preventDefault()">Last 7 Days</button>
+            <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'last 30 days', 'btn-light': period != 'last 30 days'}" (click)="setPeriod('last 30 days'); $event.preventDefault()">Last 30 Days</button>
+            <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'this month', 'btn-light': period != 'this month'}" (click)="setPeriod('this month'); $event.preventDefault()">This Month</button>
+            <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'custom', 'btn-light': period != 'custom'}" (click)="disabled = false; period = 'custom'; $event.preventDefault()">Custom</button>
+            <button class="btn btn-primary btn-sm m-2 float-right" (click)="apply(); datepicker.close()">Apply</button>
+          </ng-template>
+          <fa-icon [icon]="faAngleDown" class="pointer d-inline-block float-right" (click)="datepicker.toggle()"></fa-icon>
         </div>
       </div>
     </div>
   </div>
   <div class="row mb-3">
     <div class="col-lg-12">
-      <div class="card">
+      <div class="card card-success">
         <div class="card-body">
-          <h5 class="card-title">MARKET INSIGHTS</h5>
+          <h5 class="card-title m-0">MARKET INSIGHTS</h5>
+          <div class="help">
+            <div><img src="assets/help/Help.png" alt="help"></div>
+            <div><a class="text-white" href="">Click Here for Help</a></div>
+            <div><fa-icon [icon]="faAngleUp" class="pointer"></fa-icon></div>
+          </div>
         </div>
       </div>
     </div>
@@ -34,7 +69,19 @@
     <div class="col-lg-3">
       <div class="card">
         <div class="card-body">
-          Sales Turnover
+          <h6 class="card-title">Sales Turnover</h6>
+          <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
+          <div class="row">
+            <div class="col-lg-9" style="font-size: 12px;">
+              <h5>Rp 3,600,000</h5>
+              <img src="assets/down-arrow/DownArrow.svg" alt="down-arrow" style="width: 10px;">
+              <span class="text-danger"><b>13.8%</b></span>
+              last period in products sold
+            </div>
+            <div class="col-lg-3">
+              <img src="assets/sales/turnover.svg" alt="sales-turnover">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -44,6 +91,8 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">AVERAGE PURCHASE VALUE</h5>
+          <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
+          <app-chart chartID="mixed-chart-1-cac" [chartConfig]="this.chartDB.mixed1CAC"></app-chart>
         </div>
       </div>
     </div>
@@ -51,6 +100,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">BEST SELLING SKU</h5>
+          <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
           <div class="row mb-1">
             <div class="col-lg-12">
               <div class="card">
@@ -65,6 +115,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">TOP COMPETITOR SKU</h5>
+          <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
         </div>
       </div>
     </div>
