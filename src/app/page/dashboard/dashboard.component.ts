@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   faAngleUp = faAngleUp;
 
   periodList: string[] = ['today', 'yesterday', 'last 7 days', 'last 30 days', 'this month', 'custom'];
+  series: any[] = [];
 
   startDate: Date;
   endDate: Date;
@@ -40,7 +41,7 @@ export class DashboardComponent implements OnInit {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
-    this.chartDB = ChartDB;
+    this.chartDB = ChartDB.bar2CAC;
     
     let today: Date = new Date();
     this.yesterday = {
@@ -86,6 +87,20 @@ export class DashboardComponent implements OnInit {
       }
       this.fromDate = NgbDate.from(todayTmp);
       this.toDate = null;
+
+      this.series = [{
+        name: 'Net',
+        data: [21, 7, 25, 13, 22, 8]
+      }, {
+        name: 'Gross',
+        data: [44, 55, 41, 67, 22, 43]
+      }, {
+        name: 'APV',
+        data: [13, 23, 20, 8, 13, 27]
+      }, {
+        name: 'UPT',
+        data: [11, 17, 15, 15, 21, 14]
+      }]
     } else if(period.toLowerCase() == 'last 7 days') {
       this.startDate = today;
       this.endDate = new Date();
@@ -105,6 +120,20 @@ export class DashboardComponent implements OnInit {
       }
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
+
+      this.series = [{
+        name: 'Net',
+        data: [11, 17, 15, 15, 21, 14]
+      }, {
+        name: 'Gross',
+        data: [21, 7, 25, 13, 22, 8]
+      }, {
+        name: 'APV',
+        data: [44, 55, 41, 67, 22, 43]
+      }, {
+        name: 'UPT',
+        data: [13, 23, 20, 8, 13, 27]
+      }]
     } else if(period.toLowerCase() == 'last 30 days') {
       this.startDate = today;
       this.endDate = new Date();
@@ -124,6 +153,20 @@ export class DashboardComponent implements OnInit {
       }
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
+
+      this.series = [{
+        name: 'Net',
+        data: [13, 23, 20, 8, 13, 27]
+      }, {
+        name: 'Gross',
+        data: [11, 17, 15, 15, 21, 14]
+      }, {
+        name: 'APV',
+        data: [21, 7, 25, 13, 22, 8]
+      }, {
+        name: 'UPT',
+        data: [44, 55, 41, 67, 22, 43]
+      }]
     } else if(period.toLowerCase() == 'this month') {
       this.startDate = new Date(today.getFullYear(), today.getMonth(), 1);
       this.endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -140,6 +183,20 @@ export class DashboardComponent implements OnInit {
       }
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
+
+      this.series = [{
+        name: 'Net',
+        data: [11, 17, 15, 15, 21, 14]
+      }, {
+        name: 'Gross',
+        data: [13, 23, 20, 8, 13, 27]
+      }, {
+        name: 'APV',
+        data: [21, 7, 25, 13, 22, 8]
+      }, {
+        name: 'UPT',
+        data: [44, 55, 41, 67, 22, 43]
+      }]
     } else if(period.toLowerCase() == 'custom') {
       this.disabled = false;
     }
