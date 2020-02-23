@@ -100,7 +100,8 @@
                 </div>
               </div>
             </div>
-            <app-chart chartID="bar-chart-2-cac" [chartConfig]="this.chartDB" [newData]="series"></app-chart>
+            <div *ngIf="!showChart" class="loader m-auto"></div>
+            <app-chart *ngIf="showChart" chartID="bar-chart-2-cac" [chartConfig]="this.chartDB"></app-chart>
           </div>
         </div>
       </div>

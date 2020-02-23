@@ -13,6 +13,7 @@ import { ChartDB } from '../../fake-db/chart-data';
 export class DashboardComponent implements OnInit {
 
   disabled: boolean;
+  showChart: boolean;
 
   period: string;
   dateString: string;
@@ -38,6 +39,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) { 
     this.disabled = true;
+    this.showChart = true;
+
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -88,7 +91,7 @@ export class DashboardComponent implements OnInit {
       this.fromDate = NgbDate.from(todayTmp);
       this.toDate = null;
 
-      this.series = [{
+      this.chartDB.series = [{
         name: 'Net',
         data: [21, 7, 25, 13, 22, 8]
       }, {
@@ -121,7 +124,7 @@ export class DashboardComponent implements OnInit {
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
 
-      this.series = [{
+      this.chartDB.series = [{
         name: 'Net',
         data: [11, 17, 15, 15, 21, 14]
       }, {
@@ -154,7 +157,7 @@ export class DashboardComponent implements OnInit {
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
 
-      this.series = [{
+      this.chartDB.series = [{
         name: 'Net',
         data: [13, 23, 20, 8, 13, 27]
       }, {
@@ -184,7 +187,7 @@ export class DashboardComponent implements OnInit {
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
 
-      this.series = [{
+      this.chartDB.series = [{
         name: 'Net',
         data: [11, 17, 15, 15, 21, 14]
       }, {
@@ -213,10 +216,18 @@ export class DashboardComponent implements OnInit {
       } else if(!this.checkMax(this.startDate, this.endDate)) {
         Swal.fire('Error', 'Maximum time range is 6 months', 'error');
       } else {
-        this.saveDate() 
+        this.saveDate();
+        setTimeout(() => {
+          this.showChart = true;
+        }, 1000);
+        this.showChart = false;
       }
     } else {
       this.saveDate();
+      setTimeout(() => {
+        this.showChart = true;
+      }, 1000);
+      this.showChart = false;
     }
     
   }
