@@ -2935,7 +2935,7 @@ export class ChartDB {
     dataLabels: {
       enabled: false
     },
-    colors: ['#4099ff', '#0e9e4a', '#FFB64D', '#FF5370'],
+    colors: ['#37B04C', '#289E45', '#6BE681', '#707070'],
     responsive: [{
       breakpoint: 480,
       options: {
@@ -2952,21 +2952,21 @@ export class ChartDB {
       },
     },
     series: [{
-      name: 'PRODUCT A',
+      name: 'Net',
       data: [44, 55, 41, 67, 22, 43]
     }, {
-      name: 'PRODUCT B',
+      name: 'Gross',
       data: [13, 23, 20, 8, 13, 27]
     }, {
-      name: 'PRODUCT C',
+      name: 'APV',
       data: [11, 17, 15, 15, 21, 14]
     }, {
-      name: 'PRODUCT D',
+      name: 'UPT',
       data: [21, 7, 25, 13, 22, 8]
     }],
     xaxis: {
       type: 'datetime',
-      categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT'],
+      categories: ['02/11/2012 GMT', '02/12/2012 GMT', '02/13/2012 GMT', '02/14/2012 GMT', '02/15/2012 GMT', '02/16/2012 GMT'],
     },
     legend: {
       position: 'right',

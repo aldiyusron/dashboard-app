@@ -7,6 +7,10 @@ $primary-transparent: #6BE681;
   cursor: pointer;
 }
 
+.w-10 { width: 10px; }
+.w-60 { width: 60px; }
+.w-full { width: 100% ;}
+
 .f-w-300 { font-weight: 300; }
 .f-w-500 { font-weight: 500; }
 
@@ -25,12 +29,18 @@ $primary-transparent: #6BE681;
   margin-right: 10px;
 }
 
+.m-r-15 {
+  margin-right: 15px;
+}
+
 .m-r-20 {
   margin-right: 20px;
 }
 
 .text-grey { color: #707070C4; }
 .text-grey-secondary { color: #8b8b8b; }
+
+.text-capitalize { text-transform: capitalize; }
 
 .btn-primary {
   background-color: $primary;
@@ -46,6 +56,8 @@ $primary-transparent: #6BE681;
   background-color: $success;
   color: white;
 }
+
+.card-body { padding: 15px; }
 
 .card-body-flex {
   display: flex;

@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   faEllipsisV = faEllipsisV;
   faAngleUp = faAngleUp;
 
+  periodList: string[] = ['today', 'yesterday', 'last 7 days', 'last 30 days', 'this month', 'custom'];
+
   startDate: Date;
   endDate: Date;
 
@@ -46,6 +48,11 @@ export class DashboardComponent implements OnInit {
   setPeriod(period: string) {
     this.period = period;
     this.setDate(period);
+  }
+
+  setPeriodAndDate(period: string) {
+    this.setPeriod(period);
+    this.apply();
   }
 
   setDate(period: string) {

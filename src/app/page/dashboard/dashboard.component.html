@@ -70,11 +70,11 @@
         <div class="card">
           <div class="card-body">
             <p class="card-title text-grey-secondary">Sales Turnover</p>
-            <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
+            <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
             <div class="row">
-              <div class="col-lg-9" style="font-size: 12px;">
+              <div class="col-lg-9 f-10">
                 <h5>Rp 3,600,000</h5>
-                <img src="assets/down-arrow/DownArrow.svg" alt="down-arrow" style="width: 10px;">
+                <img src="assets/down-arrow/DownArrow.svg" alt="down-arrow" class="w-10">
                 <span class="text-danger"><b>13.8%</b></span>
                 <span class="text-grey-secondary">&nbsp;last period in products sold</span>
               </div>
@@ -90,17 +90,17 @@
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title f-w-300">AVERAGE PURCHASE VALUE</h5>
-            <!-- <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Action - 1</button>
-                <button ngbDropdownItem>Another Action</button>
-                <button ngbDropdownItem>Something else is here</button>
+            <div class="mb-1">
+              <h5 class="card-title f-w-300">AVERAGE PURCHASE VALUE</h5>
+              <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
+              <div ngbDropdown class="d-inline-block float-right m-r-15">
+                <button class="btn btn-outline-secondary text-capitalize" id="dropdownBasic1" ngbDropdownToggle>{{period}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button class="text-capitalize" ngbDropdownItem *ngFor="let item of periodList" (click)="setPeriodAndDate(item)">{{item}}</button>
+                </div>
               </div>
-            </div> -->
-            <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
-            <app-chart chartID="mixed-chart-1-cac" [chartConfig]="this.chartDB.mixed1CAC"></app-chart>
+            </div>
+            <app-chart chartID="bar-chart-2-cac" [chartConfig]="this.chartDB.bar2CAC"></app-chart>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title f-w-300">BEST SELLING SKU</h5>
-            <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
+            <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
             <div class="row mb-1">
               <div class="col-lg-12 mb-2">
                 <div class="card bg-warning">
@@ -127,10 +127,10 @@
               <div class="col-lg-12 mb-2">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
@@ -141,10 +141,10 @@
               <div class="col-lg-12 mb-2">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
@@ -169,10 +169,10 @@
               <div class="col-lg-12">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
@@ -188,7 +188,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title f-w-300">TOP COMPETITOR SKU</h5>
-            <img src="assets/more/more.svg" alt="more" style="width: 10px;" class="float-right">
+            <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
             <div class="row mb-1">
               <div class="col-lg-12 mb-2">
                 <div class="card bg-warning">
@@ -196,7 +196,7 @@
                     <div class="col-lg-4"><img src="assets/product/product.png" alt="product"></div>
                     <div class="col-lg-7" style="padding: 8px 5px;">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-12">Rp XXXX</span>
                         <span class="f-12">[jml terjual]</span>
                       </div>
@@ -207,10 +207,10 @@
               <div class="col-lg-12 mb-2">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
@@ -221,10 +221,10 @@
               <div class="col-lg-12 mb-2">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
@@ -235,10 +235,10 @@
               <div class="col-lg-12 mb-2">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
@@ -249,10 +249,10 @@
               <div class="col-lg-12">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
                       <p class="mb-2 mt-2">[Nama Product]</p>
-                      <div class="d-flex text-secondary" style="justify-content: space-between">
+                      <div class="card-body-flex text-secondary">
                         <span class="f-10">Rp XXXX</span>
                         <span class="f-10">[jml terjual]</span>
                       </div>
