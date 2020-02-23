@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { faAngleDown, faEllipsisV, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+
 import { ChartDB } from '../../fake-db/chart-data';
 
 @Component({
@@ -22,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   startDate: Date;
   endDate: Date;
+  yesterday: NgbDateStruct;
 
   options = { year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -38,11 +41,17 @@ export class DashboardComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
     this.chartDB = ChartDB;
+    
+    let today: Date = new Date();
+    this.yesterday = {
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      day: today.getDate() - 1
+    }
   }
 
   ngOnInit(): void {
-    this.setPeriod('last 7 days');
-    this.apply();
+    this.setPeriodAndDate('last 7 days');
   }
 
   setPeriod(period: string) {
@@ -132,17 +141,30 @@ export class DashboardComponent implements OnInit {
       this.fromDate = NgbDate.from(start);
       this.toDate = NgbDate.from(end);
     } else if(period.toLowerCase() == 'custom') {
-      let start = `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`;
-      let end = `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`;
-      this.startDate = new Date(start);
-      this.endDate = new Date(end);
+      this.disabled = false;
     }
   }
 
   apply() {
     if(this.period == 'custom') {
-      this.setDate('custom');
+      let start = `${this.fromDate.year}-${this.fromDate.month}-${this.fromDate.day}`;
+      let end = `${this.toDate.year}-${this.toDate.month}-${this.toDate.day}`;
+      this.startDate = new Date(start);
+      this.endDate = new Date(end);
+      if(!this.checkMin(this.startDate, this.endDate)) { 
+        Swal.fire('Error', 'Minimum time range is 1 day', 'error');
+      } else if(!this.checkMax(this.startDate, this.endDate)) {
+        Swal.fire('Error', 'Maximum time range is 6 months', 'error');
+      } else {
+        this.saveDate() 
+      }
+    } else {
+      this.saveDate();
     }
+    
+  }
+
+  saveDate() {
     if(this.toDate == null) {
       this.dateString = this.startDate.toLocaleDateString('id-ID', this.options);
     } else {
@@ -151,11 +173,12 @@ export class DashboardComponent implements OnInit {
   }
 
   checkMin(start: Date, end: Date): boolean {
-    return true;
+    return end.getDate() - start.getDate() > 0;
   }
 
   checkMax(start: Date, end: Date): boolean {
-    return true;
+    // assumption 6 months = 30 days * 6 = 180 days
+    return end.getDate() - start.getDate() <= 180;
   }
 
   onDateSelection(date: NgbDate) {

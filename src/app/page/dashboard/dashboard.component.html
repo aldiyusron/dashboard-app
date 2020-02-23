@@ -1,14 +1,14 @@
 <div class="row m-0">
   <div class="col-lg-12 pt-3 bg-light">
     <div class="row mb-3">
-      <div class="col-lg-7 m-auto"><h1 class="text-grey m-0">Dashboard</h1></div>
+      <div class="col-lg-7 m-auto"><h1 class="text-grey m-0 ff-2">Dashboard</h1></div>
       <div class="col-lg-5">
         <div class="card">
           <div class="card-body card-body-flex">
             <div class="d-inline-block text-grey-secondary">
               <img src="assets/calendar/calendar.png" alt="calendar">
-              <span class="m-l-10 m-r-10">Period</span>
-              <span class="m-l-20 m-r-20">{{dateString}}</span>
+              <span class="m-l-15 mr-5 ff-1">Period</span>
+              <span class="ml-5 ff-1">{{dateString}}</span>
             </div>
             <form class="form-inline">
               <div class="form-group hidden">
@@ -16,7 +16,7 @@
                   <input name="datepicker"
                           class="form-control"
                           ngbDatepicker
-                          #datepicker="ngbDatepicker"
+                          #datepicker="ngbDatepicker" [maxDate]="yesterday"
                           [autoClose]="'outside'" navigation="arrows"
                           (dateSelect)="onDateSelection($event)"
                           [displayMonths]="2" placement="bottom auto"
@@ -38,13 +38,13 @@
             </form>
             <ng-template #footerTemplate>
               <hr class="my-0">
-              <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'today', 'btn-light': period != 'today'}" (click)="setPeriod('today'); $event.preventDefault()">Today</button>
-              <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'yesterday', 'btn-light': period != 'yesterday'}" (click)="setPeriod('yesterday'); $event.preventDefault()">Yesterday</button>
-              <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'last 7 days', 'btn-light': period != 'last 7 days'}" (click)="setPeriod('last 7 days'); $event.preventDefault()">Last 7 Days</button>
-              <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'last 30 days', 'btn-light': period != 'last 30 days'}" (click)="setPeriod('last 30 days'); $event.preventDefault()">Last 30 Days</button>
-              <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'this month', 'btn-light': period != 'this month'}" (click)="setPeriod('this month'); $event.preventDefault()">This Month</button>
-              <button class="btn btn-sm m-2 float-left" [ngClass]="{'btn-primary': period == 'custom', 'btn-light': period != 'custom'}" (click)="disabled = false; period = 'custom'; $event.preventDefault()">Custom</button>
-              <button class="btn btn-primary btn-sm m-2 float-right" (click)="apply(); datepicker.close()">Apply</button>
+              <button class="btn btn-sm m-2 float-left ff-1" [ngClass]="{'btn-primary': period == 'today', 'btn-light': period != 'today'}" (click)="setPeriod('today'); $event.preventDefault()" disabled>Today</button>
+              <button class="btn btn-sm m-2 float-left ff-1" [ngClass]="{'btn-primary': period == 'yesterday', 'btn-light': period != 'yesterday'}" (click)="setPeriod('yesterday'); $event.preventDefault()">Yesterday</button>
+              <button class="btn btn-sm m-2 float-left ff-1" [ngClass]="{'btn-primary': period == 'last 7 days', 'btn-light': period != 'last 7 days'}" (click)="setPeriod('last 7 days'); $event.preventDefault()">Last 7 Days</button>
+              <button class="btn btn-sm m-2 float-left ff-1" [ngClass]="{'btn-primary': period == 'last 30 days', 'btn-light': period != 'last 30 days'}" (click)="setPeriod('last 30 days'); $event.preventDefault()">Last 30 Days</button>
+              <button class="btn btn-sm m-2 float-left ff-1" [ngClass]="{'btn-primary': period == 'this month', 'btn-light': period != 'this month'}" (click)="setPeriod('this month'); $event.preventDefault()">This Month</button>
+              <button class="btn btn-sm m-2 float-left ff-1" [ngClass]="{'btn-primary': period == 'custom', 'btn-light': period != 'custom'}" (click)="setPeriod('custom'); $event.preventDefault()">Custom</button>
+              <button class="btn btn-primary btn-sm m-2 float-right ff-1" (click)="apply(); datepicker.close()">Apply</button>
             </ng-template>
             <fa-icon [icon]="faAngleDown" class="pointer d-inline-block float-right" (click)="datepicker.toggle()"></fa-icon>
           </div>
@@ -55,10 +55,10 @@
       <div class="col-lg-12">
         <div class="card card-success">
           <div class="card-body">
-            <h5 class="card-title m-0">MARKET INSIGHTS</h5>
+            <h5 class="card-title m-0 ff-2">MARKET INSIGHTS</h5>
             <div class="help">
               <div><img src="assets/help/Help.png" alt="help"></div>
-              <div><a class="text-white" href="">Click Here for Help</a></div>
+              <div><a class="text-white ff-2" href="">Click Here for Help</a></div>
               <div><fa-icon [icon]="faAngleUp" class="pointer"></fa-icon></div>
             </div>
           </div>
@@ -69,14 +69,14 @@
       <div class="col-lg-3">
         <div class="card">
           <div class="card-body">
-            <p class="card-title text-grey-secondary">Sales Turnover</p>
+            <p class="card-title text-grey-secondary ff-2">Sales Turnover</p>
             <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
             <div class="row">
               <div class="col-lg-9 f-10">
-                <h5>Rp 3,600,000</h5>
+                <h5 class="ff-2"><b>Rp 3,600,000</b></h5>
                 <img src="assets/down-arrow/DownArrow.svg" alt="down-arrow" class="w-10">
-                <span class="text-danger"><b>13.8%</b></span>
-                <span class="text-grey-secondary">&nbsp;last period in products sold</span>
+                <span class="text-danger ff-2"><b>13.8%</b></span>
+                <span class="text-grey-secondary ff-2">&nbsp;last period in products sold</span>
               </div>
               <div class="col-lg-3">
                 <img src="assets/sales/turnover.svg" alt="sales-turnover">
@@ -91,12 +91,12 @@
         <div class="card">
           <div class="card-body">
             <div class="mb-1">
-              <h5 class="card-title f-w-300">AVERAGE PURCHASE VALUE</h5>
+              <h5 class="card-title f-w-300 ff-2">AVERAGE PURCHASE VALUE</h5>
               <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
               <div ngbDropdown class="d-inline-block float-right m-r-15">
-                <button class="btn btn-outline-secondary text-capitalize" id="dropdownBasic1" ngbDropdownToggle>{{period}}</button>
+                <button class="btn btn-outline-secondary text-capitalize ff-2" id="dropdownBasic1" ngbDropdownToggle>{{period}}</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button class="text-capitalize" ngbDropdownItem *ngFor="let item of periodList" (click)="setPeriodAndDate(item)">{{item}}</button>
+                  <button class="text-capitalize ff-2" ngbDropdownItem *ngFor="let item of periodList" (click)="setPeriodAndDate(item)" [disabled]="item == 'today'">{{item}}</button>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@
       <div class="col-lg-3">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title f-w-300">BEST SELLING SKU</h5>
+            <h5 class="card-title f-w-300 ff-2">BEST SELLING SKU</h5>
             <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
             <div class="row mb-1">
               <div class="col-lg-12 mb-2">
@@ -129,10 +129,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -143,10 +143,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -155,12 +155,12 @@
               <div class="col-lg-12 mb-2">
                 <div class="card">
                   <div class="row">
-                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" style="width: 60px"></div>
+                    <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="d-flex text-secondary" style="justify-content: space-between">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -171,10 +171,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -187,7 +187,7 @@
       <div class="col-lg-3">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title f-w-300">TOP COMPETITOR SKU</h5>
+            <h5 class="card-title f-w-300 ff-2">TOP COMPETITOR SKU</h5>
             <img src="assets/more/more.svg" alt="more" class="w-10 float-right">
             <div class="row mb-1">
               <div class="col-lg-12 mb-2">
@@ -195,10 +195,10 @@
                   <div class="row">
                     <div class="col-lg-4"><img src="assets/product/product.png" alt="product"></div>
                     <div class="col-lg-7" style="padding: 8px 5px;">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-12">Rp XXXX</span>
-                        <span class="f-12">[jml terjual]</span>
+                        <span class="f-12 ff-2">Rp XXXX</span>
+                        <span class="f-12 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -209,10 +209,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -223,10 +223,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -237,10 +237,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
@@ -251,10 +251,10 @@
                   <div class="row">
                     <div class="col-lg-3"><img src="assets/product/product.png" alt="product" class="w-60"></div>
                     <div class="col-lg-7 f-12">
-                      <p class="mb-2 mt-2">[Nama Product]</p>
+                      <p class="mb-2 mt-2 ff-2">[Nama Product]</p>
                       <div class="card-body-flex text-secondary">
-                        <span class="f-10">Rp XXXX</span>
-                        <span class="f-10">[jml terjual]</span>
+                        <span class="f-10 ff-2">Rp XXXX</span>
+                        <span class="f-10 ff-2">[jml terjual]</span>
                       </div>
                     </div>
                   </div>
