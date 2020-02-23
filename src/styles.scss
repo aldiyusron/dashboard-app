@@ -7,6 +7,12 @@ $primary-transparent: #6BE681;
   cursor: pointer;
 }
 
+.f-w-300 { font-weight: 300; }
+.f-w-500 { font-weight: 500; }
+
+.f-10 { font-size: 10px; }
+.f-12 { font-size: 12px; }
+
 .m-l-10 {
   margin-left: 10px;
 }
@@ -22,6 +28,9 @@ $primary-transparent: #6BE681;
 .m-r-20 {
   margin-right: 20px;
 }
+
+.text-grey { color: #707070C4; }
+.text-grey-secondary { color: #8b8b8b; }
 
 .btn-primary {
   background-color: $primary;

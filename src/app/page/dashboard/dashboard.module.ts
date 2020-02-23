@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -15,7 +15,8 @@ import { SharedModule } from './../../shared/shared.module';
     DashboardRoutingModule,
     SharedModule,
     FontAwesomeModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgbDropdownModule
   ]
 })
 export class DashboardModule { }

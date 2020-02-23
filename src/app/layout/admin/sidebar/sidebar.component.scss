@@ -1,0 +1,37 @@
+.main-sidebar {
+  position: fixed;
+  height: 100vh;
+  min-height: 100vh;
+  width: 70px;
+  display: block;
+  z-index: 1028;
+  margin-top: 60px;
+  top: 0;
+  border-right: 1px solid #D2D2D2;
+}
+
+.main-sidebar ul { 
+  list-style: none; 
+  text-align: center;
+  padding: 0;
+}
+
+.main-sidebar ul li {
+  padding: 15px 0;
+  border-bottom: 1px solid #D2D2D2;
+}
+
+.sidebar-icon {
+  width: 17px;
+}
+
+.icon-wrapper {
+  margin: auto;
+  width: 24px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+}
+
+.active {
+  background: #D2D2D2 0% 0% no-repeat padding-box;
+}
